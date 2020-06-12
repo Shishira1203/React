@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardBody, CardText, CardTitle } from 'reactstrap';
+import { Card, CardImg,  CardBody, CardText, CardTitle } from 'reactstrap';
+import moment from 'moment';
 class DishDetail extends Component {
-    constructor(props) {
-        super(props);
-
-    }
     renderDish(dish) {
         if (dish!=null){
             return(
@@ -24,15 +21,15 @@ class DishDetail extends Component {
     }
 
     renderComments(array) {
-        if(array.length != 0) {
+        if(array.length !== 0) {
             return (
-                <div>
+                <div className="col-122 col-md-5 m-1">
                     <h4>Comments</h4>
                     {array.map(comment => (
                         <ul className="list-unstyled">
                             <li>
                                 <p>{comment.comment}</p>
-                                <p>-- {comment.author} , {comment.date}</p>
+                                <p>-- {comment.author} , {moment(comment.date).format('MMM DD, YYYY')}</p>
                             </li>
                         </ul>
                     )
