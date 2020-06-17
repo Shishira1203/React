@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { Card, CardImg,  CardBody, CardText, CardTitle } from 'reactstrap';
 import moment from 'moment';
 class DishDetail extends Component {
+    componentDidMount() {
+        console.log('DishDetail Component componentDidMount is invoked!')
+    }
+    componentDidUpdate(){
+        console.log('DishDetail Component componentDidUpdate is invoked!')
+    }
     renderDish(dish) {
         if (dish!=null){
             return(
@@ -28,7 +34,7 @@ class DishDetail extends Component {
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
                         {dish.comments.map(comment => (
-                            <ul className="list-unstyled">
+                            <ul className="list-unstyled" key={comment.id}>
                                 <li>
                                     <p>{comment.comment}</p>
                                     <p>-- {comment.author} , {moment(comment.date).format('MMM DD, YYYY')}</p>
@@ -44,6 +50,7 @@ class DishDetail extends Component {
         }
     }
     render() {
+        console.log('DishDetail Component render is invoked!')
         return(
             <div className="container">
                <div className="row">
