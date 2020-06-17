@@ -5,13 +5,15 @@ class DishDetail extends Component {
     renderDish(dish) {
         if (dish!=null){
             return(
-                <Card className="col-12 col-md-5 m-1">
-                    <CardImg width="100%" src={dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle><strong>{dish.name}</strong></CardTitle>
-                        <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
+                <div key={dish.id} className="col-12 col-md-5 m-1">
+                    <Card>
+                        <CardImg width="100%" src={dish.image} alt={dish.name} />
+                        <CardBody>
+                            <CardTitle><strong>{dish.name}</strong></CardTitle>
+                            <CardText>{dish.description}</CardText>
+                        </CardBody>
+                    </Card>
+                </div>
             );
         } else {
             return(
@@ -20,19 +22,19 @@ class DishDetail extends Component {
         }
     }
 
-    renderComments(array) {
-        if(array.length !== 0) {
+    renderComments(dish) {
+        if(dish != null) {
             return (
-                <div className="col-122 col-md-5 m-1">
+                <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
-                    {array.map(comment => (
-                        <ul className="list-unstyled">
-                            <li>
-                                <p>{comment.comment}</p>
-                                <p>-- {comment.author} , {moment(comment.date).format('MMM DD, YYYY')}</p>
-                            </li>
-                        </ul>
-                    )
+                        {dish.comments.map(comment => (
+                            <ul className="list-unstyled">
+                                <li>
+                                    <p>{comment.comment}</p>
+                                    <p>-- {comment.author} , {moment(comment.date).format('MMM DD, YYYY')}</p>
+                                </li>
+                            </ul>
+                        )
                     )}
                 </div>);
         } else {
@@ -43,10 +45,11 @@ class DishDetail extends Component {
     }
     render() {
         return(
-            <div className="row">
-
-                {this.renderDish(this.props.selectedDish)}
-                {this.renderComments(this.props.selectedDish.comments)} 
+            <div className="container">
+               <div className="row">
+                {this.renderDish(this.props.dish)}
+                {this.renderComments(this.props.dish)} 
+                </div>
             </div>
         );
     }
