@@ -7,7 +7,7 @@ const required = (value) => value && value.length;
 const maxlength = (len) => (val) =>!(val) || (val.length <= len);
 const minlength = (len) => (val) =>(val) && (val.length >= len);
 const isNumber = (val) => !isNaN(Number(val));
-const validEmail = (val) => /^[A-Z0-9]._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 class Contact extends Component {
     constructor(props){
@@ -138,7 +138,7 @@ class Contact extends Component {
                                         model=".email"
                                         show="touched"
                                         messages={{
-                                                  required: '*Required ',
+                                                  required: '*Required',
                                                   validEmail: ' Invalid Email Address'
                                                  
                                                  }}/>
