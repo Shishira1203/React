@@ -1,21 +1,19 @@
 import * as ActionTypes from './ActionTypes';
 //... spread operator current value of state
-export const Dishes = (state= {
-    isLoading: true,
-    error: null,
-    dishes: []
-},action) =>{
-    switch(action.type) {
+export const Dishes = (state = { isLoading: true,
+    errMess: null,
+    dishes:[]}, action) => {
+    switch (action.type) {
         case ActionTypes.ADD_DISHES:
-            return {...state,isLoading:false,error:null,dishes:action.payload}
-            
+            return {...state, isLoading: false, errMess: null, dishes: action.payload};
+
         case ActionTypes.DISHES_LOADING:
-            return {...state,isLoading:true,error:null,dishes:[]}
-            
+            return {...state, isLoading: true, errMess: null, dishes: []}
+
         case ActionTypes.DISHES_FAILED:
-            return {...state,isLoading:false,error:action.payload,dishes:[]}
-            
+            return {...state, isLoading: false, errMess: action.payload};
+
         default:
             return state;
     }
-}
+};

@@ -59,11 +59,11 @@ import { baseUrl } from '../shared/baseUrl';
                 </div>
             );
         }
-        else if(props.Err){
+        else if(props.errMess){
             return(
                 <div className="container">
                     <div className="row">
-                        <h4>{props.error}</h4>
+                        <h4>{props.errMess}</h4>
                     </div>
                 </div>
             );
